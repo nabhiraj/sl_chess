@@ -3,14 +3,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Pieces_1 = __importDefault(require("./Pieces"));
 const PosConversionUtil_1 = __importDefault(require("./PosConversionUtil"));
-class Root {
+class Root extends Pieces_1.default {
     constructor(code) {
-        this.code = code;
-        this.color = code[0] === 'w' ? 'white' : 'black';
+        super(code);
     }
-    getPieceCode() {
-        return this.code;
+    static getPiece(code) {
+        if (!Root.instance) {
+            Root.instance = new Root(code);
+        }
+        return Root.instance;
     }
     possibleMoves(currPosition, boardState) {
         let res = [];
@@ -69,19 +72,6 @@ class Root {
             }
         }
         return res;
-    }
-    isMovePossible(from, to, boardState) {
-        let possibleMoves = this.possibleMoves(from, boardState);
-        return possibleMoves.includes(to);
-    }
-    static getPiece(code) {
-        if (!Root.instance) {
-            Root.instance = new Root(code);
-        }
-        return Root.instance;
-    }
-    getPieceColor() {
-        return this.color;
     }
 }
 exports.default = Root;

@@ -1,10 +1,10 @@
 import ChessBoardRep from "./ChessBoardRep";
 import Piece from "./Pieces/Pieces";
-import RootPiece from "./Pieces/RootPiece";
+import Root from "./Pieces/Root";
 import SimpleChessBoard from "./SimpleChessBoard";
 
 
-let myPiece:Piece = RootPiece.getPiece('w_root');
+let myPiece:Piece = Root.getPiece('w_root');
 let boardState:ChessBoardRep = new SimpleChessBoard();
 boardState.MovePiece('A1','F5');
 let a=myPiece.possibleMoves('F5',boardState);

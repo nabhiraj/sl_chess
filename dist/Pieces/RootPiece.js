@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const PosConversionUtil_1 = __importDefault(require("./PosConversionUtil"));
 class RootPiece {
     constructor(code) {
         this.code = code;
@@ -8,35 +12,15 @@ class RootPiece {
     getPieceCode() {
         return this.code;
     }
-    possibleMoves(currPosition) {
-        return []; //need to remove this line latter.
-        /*
-        let row:number = getRow(currPosition);//we need to define this
-        let col:number = getCol(currPosition);//we need to define this
-        let res:string[]=[];
-        for(let i=row;i<8;i++){
-            if(acceptable){
-                res.push(getPosition(i,col));
-            }
-        }
-        for(let i=row;i>=0;i--){
-            if(acceptable){
-                res.push(getPosition(i,col));
-            }
-        }
-        for(let j=col;j<8;j++){
-            if(acceptable){
-                res.push(getPosition(row,j));
-            }
-        }
-        for(let j=col;j>=0;j--){
-            if(acceptable){
-                res.push(getPosition(row,j));
-            }
-        }*/
+    possibleMoves(currPosition, boardState) {
+        let res = [];
+        let currRow = PosConversionUtil_1.default.getRow(currPosition);
+        let currCol = PosConversionUtil_1.default.getCol(currPosition);
+        return res;
     }
-    isMovePossible(from, to) {
-        throw new Error("Method not implemented.");
+    isMovePossible(from, to, boardState) {
+        let possibleMoves = this.possibleMoves(from, boardState);
+        return possibleMoves.includes(to);
     }
     static getPiece(code) {
         if (!RootPiece.instance) {
@@ -44,7 +28,7 @@ class RootPiece {
         }
         return RootPiece.instance;
     }
-    getPieceColor(currPosition) {
+    getPieceColor() {
         return this.color;
     }
 }

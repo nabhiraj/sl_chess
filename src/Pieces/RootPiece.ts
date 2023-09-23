@@ -1,5 +1,7 @@
 
 import Piece from "./Pieces";
+import ChessBoardRep from "../ChessBoardRep";
+import PosConvertionUtil from "./PosConversionUtil";
 
 class RootPiece implements Piece {
     private static instance: Piece;
@@ -15,36 +17,17 @@ class RootPiece implements Piece {
         return this.code;
     }
 
-    public possibleMoves(currPosition: string): string[] {
-        return []; //need to remove this line latter.
-        /*
-        let row:number = getRow(currPosition);//we need to define this
-        let col:number = getCol(currPosition);//we need to define this
-        let res:string[]=[];
-        for(let i=row;i<8;i++){
-            if(acceptable){
-                res.push(getPosition(i,col));
-            }
-        }
-        for(let i=row;i>=0;i--){
-            if(acceptable){
-                res.push(getPosition(i,col));
-            }
-        }
-        for(let j=col;j<8;j++){
-            if(acceptable){
-                res.push(getPosition(row,j));
-            }
-        }
-        for(let j=col;j>=0;j--){
-            if(acceptable){
-                res.push(getPosition(row,j));
-            }
-        }*/
+    public possibleMoves(currPosition: string,boardState: ChessBoardRep): string[] {
+       let res:string[]=[];
+       let currRow=PosConvertionUtil.getRow(currPosition);
+       let currCol=PosConvertionUtil.getCol(currPosition);
+       
+       return res;
     }
 
-    public isMovePossible(from: string, to: string): boolean {
-        throw new Error("Method not implemented.");
+    public isMovePossible(from: string, to: string,boardState: ChessBoardRep): boolean {
+        let possibleMoves = this.possibleMoves(from,boardState);
+        return possibleMoves.includes(to);
     }
 
     public static getPiece(code: string): Piece {
@@ -54,7 +37,7 @@ class RootPiece implements Piece {
         return RootPiece.instance;
     }
 
-    public getPieceColor(currPosition: string): string {
+    public getPieceColor(): string {
         return this.color;
     }
 }

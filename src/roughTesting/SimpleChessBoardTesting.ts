@@ -1,8 +1,9 @@
 //testing simple chess board
+import ChessBoardRep from "../ChessBoardRep";
 import SimpleChessBoard from "../SimpleChessBoard";
 import chessBoard from "../chessBoardStructure";
 
-let a = new SimpleChessBoard();
+let a:ChessBoardRep = new SimpleChessBoard();
 //console.log(a.getJsonRepresentation());
 /*
 let temp:chessBoard = {

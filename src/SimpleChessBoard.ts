@@ -26,7 +26,6 @@ class SimpleChessBoard implements ChessBoardRep{
     
     public MovePiece(from: string, to: string): void {
         //right now i will not be checking the move is legal or not.
-        this.positionToPiece.clear();
         let pieceCode: string = this.getPieceCode(from);
         this.board[pieceCode as keyof typeof this.board] = this.board[pieceCode as keyof typeof this.board].filter(x=>x!=from);
         this.board[pieceCode as keyof typeof this.board].push(to);
@@ -53,3 +52,5 @@ class SimpleChessBoard implements ChessBoardRep{
         }
     }
 }
+
+export default SimpleChessBoard;

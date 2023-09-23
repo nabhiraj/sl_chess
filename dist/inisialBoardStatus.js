@@ -1,5 +1,6 @@
-import chessBoard from "./chessBoardStructure"
-let inisialBoardState: chessBoard = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+let inisialBoardState = {
     "w_pawn": [
         "A2",
         "B2",
@@ -57,5 +58,4 @@ let inisialBoardState: chessBoard = {
         "E8"
     ]
 };
-
-export default inisialBoardState;
+exports.default = inisialBoardState;

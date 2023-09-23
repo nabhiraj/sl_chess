@@ -1,6 +1,6 @@
 //testing simple chess board
-import SimpleChessBoard from "./SimpleChessBoard";
-import chessBoard from "./chessBoardStructure";
+import SimpleChessBoard from "../SimpleChessBoard";
+import chessBoard from "../chessBoardStructure";
 
 let a = new SimpleChessBoard();
 //console.log(a.getJsonRepresentation());

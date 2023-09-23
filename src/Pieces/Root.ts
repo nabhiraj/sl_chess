@@ -3,18 +3,18 @@ import Piece from "./Pieces";
 import ChessBoardRep from "../ChessBoardRep";
 import PosConvertionUtil from "./PosConversionUtil";
 
-class RootPiece implements Piece {
+class Root extends Piece {
     private static instance: Piece;
-    private code: string;
-    private color: string;
 
     private constructor(code: string) {
-        this.code = code;
-        this.color = code[0] === 'w' ? 'white' : 'black';
+        super(code);
     }
 
-    public getPieceCode(): string {
-        return this.code;
+    public static getPiece(code: string): Piece {
+        if (!Root.instance) {
+            Root.instance = new Root(code);
+        }
+        return Root.instance;
     }
 
     public possibleMoves(currPosition: string, boardState: ChessBoardRep): string[] {
@@ -72,21 +72,6 @@ class RootPiece implements Piece {
         return res;
     }
 
-    public isMovePossible(from: string, to: string, boardState: ChessBoardRep): boolean {
-        let possibleMoves = this.possibleMoves(from, boardState);
-        return possibleMoves.includes(to);
-    }
-
-    public static getPiece(code: string): Piece {
-        if (!RootPiece.instance) {
-            RootPiece.instance = new RootPiece(code);
-        }
-        return RootPiece.instance;
-    }
-
-    public getPieceColor(): string {
-        return this.color;
-    }
 }
 
-export default RootPiece;
+export default Root;

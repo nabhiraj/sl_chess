@@ -8,6 +8,8 @@ abstract class Piece {
     public constructor(code: string) {
         this.code = code;
         this.color = code[0] === 'w' ? 'white' : 'black';
+        console.log('code of piece is '+this.code);
+        console.log('color of the piece is '+this.color);
     }
 
     public getPieceCode(): string {

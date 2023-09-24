@@ -4,17 +4,9 @@ import ChessBoardRep from "../ChessBoardRep";
 import PosConvertionUtil from "./PosConversionUtil";
 
 class Root extends Piece {
-    private static instance: Piece;
 
-    private constructor(code: string) {
+    public constructor(code: string) {
         super(code);
-    }
-
-    public static getPiece(code: string): Piece {
-        if (!Root.instance) {
-            Root.instance = new Root(code);
-        }
-        return Root.instance;
     }
 
     public possibleMoves(currPosition: string, boardState: ChessBoardRep): string[] {

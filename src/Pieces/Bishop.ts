@@ -2,20 +2,11 @@ import ChessBoardRep from "../ChessBoardRep";
 import Piece from "./Pieces";
 import PosConvertionUtil from "./PosConversionUtil";
 class Bishop extends Piece{
-    private static instance: Piece;
 
-    private constructor(code:string){
+    public  constructor(code:string){
         super(code);
     }
-    
-    public static getPiece(code: string): Piece {
-        if (!Bishop.instance) {
-            Bishop.instance = new Bishop(code);
-        }
-        return Bishop.instance;
-    }
-    
-    
+     
     public possibleMoves(currPosition: string, boardState: ChessBoardRep): string[] {
         let res:string[]=[];
         let row = PosConvertionUtil.getRow(currPosition);

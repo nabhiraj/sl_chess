@@ -1,4 +1,4 @@
-import ChessBoardRep from "../ChessBoardRep";
+import ChessBoardControler from "../ChessBoardControler";
 import Piece from "./Pieces";
 import PosConvertionUtil from "./PosConversionUtil";
 class Bishop extends Piece{
@@ -7,7 +7,7 @@ class Bishop extends Piece{
         super(code);
     }
      
-    public possibleMoves(currPosition: string, boardState: ChessBoardRep): string[] {
+    public possibleMoves(currPosition: string, boardState: ChessBoardControler): string[] {
         let res:string[]=[];
         let row = PosConvertionUtil.getRow(currPosition);
         let col= PosConvertionUtil.getCol(currPosition);

@@ -1,6 +1,6 @@
 //testing simple chess board
-import ChessBoardRep from "../ChessBoardRep";
-import SimpleChessBoard from "../SimpleChessBoard";
+import ChessBoardRep from "../ChessBoardControler";
+import SimpleChessBoard from "../SimpleChessBoardControler";
 import chessBoard from "../chessBoardStructure";
 
 let a:ChessBoardRep = new SimpleChessBoard();

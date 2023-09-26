@@ -1,7 +1,7 @@
 
 import Piece from "./Pieces";
-import ChessBoardRep from "../ChessBoardRep";
 import PosConvertionUtil from "./PosConversionUtil";
+import ChessBoardControler from "../ChessBoardControler";
 
 class Root extends Piece {
 
@@ -9,7 +9,7 @@ class Root extends Piece {
         super(code);
     }
 
-    public possibleMoves(currPosition: string, boardState: ChessBoardRep): string[] {
+    public possibleMoves(currPosition: string, boardState: ChessBoardControler): string[] {
         let res: string[] = [];
         let currRow = PosConvertionUtil.getRow(currPosition);
         let currCol = PosConvertionUtil.getCol(currPosition);

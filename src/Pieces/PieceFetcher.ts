@@ -1,6 +1,7 @@
 import Root from "./Root";
 import Bishop from "./Bishop";
 import Piece from "./Pieces";
+import Queen from "./Queen";
 class PieceFetcher{
     private static pieceMap:Map<string,Piece> = new Map();
     public static getPiece(code:string):Piece{
@@ -24,6 +25,14 @@ class PieceFetcher{
             case 'b_bishop':
                 res = new Bishop('b_bishop');
                 this.pieceMap.set('b_bishop',res);
+                break;
+            case 'w_queen':
+                res = new Queen('w_queen');
+                this.pieceMap.set('w_queen',res);
+                break;
+            case 'b_queen':
+                res = new Queen('b_queen');
+                this.pieceMap.set('b_queen',res);
                 break;
             default:
                 throw 'wrong code provided';

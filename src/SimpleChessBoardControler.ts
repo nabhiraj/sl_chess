@@ -1,19 +1,19 @@
-import ChessBoardRep from "./ChessBoardRep";
+import ChessBoardControler from "./ChessBoardControler";
 import chessBoard from "./chessBoardStructure";
 import inisialBoardState from "./inisialBoardStatus";
 
-class SimpleChessBoard implements ChessBoardRep{
+class SimpleChessBoardControler implements ChessBoardControler{
     private positionToPiece:Map<string,string>;
     private board:chessBoard;
     
     constructor(){
         this.positionToPiece = new Map();
-        this.board=inisialBoardState;//this we have to fix.
-        this.drawBoard(this.board);
+        this.board=JSON.parse(JSON.stringify(inisialBoardState));
+        this.setupBoard(this.board);
     }
     
-    public drawBoard(board: chessBoard): void {
-        this.board = board;
+    public setupBoard(board: chessBoard): void {
+        this.board = JSON.parse(JSON.stringify(board));
         this.positionToPiece.clear();
         let pieceList = Object.keys(board);
         pieceList.forEach((piece)=>{
@@ -24,12 +24,12 @@ class SimpleChessBoard implements ChessBoardRep{
         });
     }
     
-    public MovePiece(from: string, to: string): void {
+    public movePiece(from: string, to: string): void {
         //right now i will not be checking the move is legal or not.
         let pieceCode: string = this.getPieceCode(from);
         this.board[pieceCode as keyof typeof this.board] = this.board[pieceCode as keyof typeof this.board].filter(x=>x!=from);
         this.board[pieceCode as keyof typeof this.board].push(to);
-        this.drawBoard(this.board);
+        this.setupBoard(this.board);
     }
     
     public getJsonRepresentation(): chessBoard {
@@ -53,4 +53,4 @@ class SimpleChessBoard implements ChessBoardRep{
     }
 }
 
-export default SimpleChessBoard;
+export default SimpleChessBoardControler;
